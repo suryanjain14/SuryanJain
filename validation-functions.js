@@ -2,14 +2,6 @@ $(document).ready(function() {
     $('#test-form').bootstrapValidator({
         //submitButtons: '#postForm',
         // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },        
-         
-
-        
     })
     
 });
@@ -24,9 +16,9 @@ $(document).on('success.form.bv', function(e) {
  
     // Use Ajax to submit form data
     var url = 'https://script.google.com/macros/s/AKfycbx2pbh2HntvrB9pfZEVE-0E1ImGreQyKVMuZFVPw1lSsq4k5us/exec';
-    var redirectUrl = 'success-page.html';
+    var redirectUrl = 'index.html';
     // show the loading 
-    $('#postForm').prepend($('<span></span>').addClass('glyphicon glyphicon-refresh glyphicon-refresh-animate'));
+    $('#postForm'));
     var jqxhr = $.post(url, $form.serialize(), function(data) {
         console.log("Success! Data: " + data.statusText);
         $(location).attr('href',redirectUrl);

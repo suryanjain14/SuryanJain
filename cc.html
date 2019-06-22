@@ -3,6 +3,9 @@
 <head>
 	<title>Contact V17</title>
 	<meta charset="UTF-8">
+
+<!--===============================================================================================-->
+
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
@@ -26,42 +29,44 @@
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
+
+ <script src="validation-functions.js"></script>
 </head>
 <body>
-
+<script src="validation-functions.js"></script>
 
 	<div class="container-contact100">
 		<div class="wrap-contact100">
-			<form class="contact100-form validate-form" id="test-form">
+			<form id="form" target="_self" onsubmit="return postToGoogle();" action="" autocomplete="off" class="contact100-form validate-form" >
 				<span class="contact100-form-title">
-					Send Me A Message
+					Send A Message
 				</span>
 
-				<label class="label-input100" for="first-name">Tell us your name *</label>
+				<label class="label-input100" for="first-name">your name *</label>
 				<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Type first name">
-					<input id="first-name" class="input100" type="text" name="first-name" placeholder="First name">
+					<input id="first-name" class="input100" type="text" name="entry.1285644411" placeholder="First name">
 					<span class="focus-input100"></span>
 				</div>
 				<div class="wrap-input100 rs2-wrap-input100 validate-input" data-validate="Type last name">
-					<input class="input100" type="text" name="last-name" placeholder="Last name">
+					<input  id="last-name" class="input100" type="text" name="entry.1728405017" placeholder="Last name">
 					<span class="focus-input100"></span>
 				</div>
 
 				<label class="label-input100" for="email">Enter your email *</label>
 				<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-					<input id="email" class="input100" type="text" name="email" placeholder="Eg. example@email.com">
+					<input id="email" class="input100" type="text" name="entry.92104098" placeholder="Eg. example@email.com">
 					<span class="focus-input100"></span>
 				</div>
 
 				<label class="label-input100" for="phone">Enter phone number</label>
 				<div class="wrap-input100">
-					<input id="phone" class="input100" type="text" name="phone" placeholder="Eg. +1 800 000000">
+					<input id="phone" class="input100" type="text" name="entry.842382949" placeholder="Eg. +1 800 000000">
 					<span class="focus-input100"></span>
 				</div>
 
 				<label class="label-input100" for="message">Message *</label>
 				<div class="wrap-input100 validate-input" data-validate = "Message is required">
-					<textarea id="message" class="input100" name="message" placeholder="Write a message"></textarea>
+					<textarea id="message" class="input100" name="entry.1801745177" placeholder="Write a message"></textarea>
 					<span class="focus-input100"></span>
 				</div>
 
@@ -160,5 +165,41 @@
 	  gtag('config', 'UA-23581568-13');
 	</script>
 	<script src="validation-functions.js"></script>
+
+
+<script>
+function postToGoogle() {
+                var field1 = $("#first-name").val();
+                var field2 = $("#last-name").val();
+                var field4 = $("#email").val();
+                var field3 = $("#phone").val();
+                var field5 = $("#message").text();
+
+
+
+
+
+
+                $.ajax({
+                    url: "https://docs.google.com/forms/d/e/1FAIpQLSe7OdrZLZrWYzRhyAsA3pdaX8kOfMSmEsTXgoDfGFk9O2jiIQ/formResponse?",
+					data: {"entry.1285644411": field1, "entry.1728405017": field2, "entry.842382949": field3, "entry.92104098": field4,"entry.1801745177": field5},
+                    type: "POST",
+                    dataType: "xml",
+                    success: function(d)
+					{
+					},
+					error: function(x, y, z)
+						{
+
+							$('#success-msg').show();
+							$('#form').hide();
+
+						}
+                });
+				return false;
+            }
+</script>
+
+
 </body>
 </html>
