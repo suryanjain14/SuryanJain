@@ -15,10 +15,10 @@ $(document).on('success.form.bv', function(e) {
 
  
     // Use Ajax to submit form data
-    var url = 'https://script.google.com/macros/s/AKfycbx2pbh2HntvrB9pfZEVE-0E1ImGreQyKVMuZFVPw1lSsq4k5us/exec';
+    var url = '';
     var redirectUrl = 'index.html';
     // show the loading 
-    $('#postForm'));
+    $('#postForm');
     var jqxhr = $.post(url, $form.serialize(), function(data) {
         console.log("Success! Data: " + data.statusText);
         $(location).attr('href',redirectUrl);
@@ -31,4 +31,4 @@ $(document).on('success.form.bv', function(e) {
                 $(location).attr('href',redirectUrl);                
             }
         });
-});
+})

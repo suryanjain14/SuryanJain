@@ -46,9 +46,13 @@ module.exports = function GitHubCalendar (container, username, options) {
         return "https://urlreq.appspot.com/req?method=GET&url=" + url;
     };
 
-    let fetchCalendar = () => fetch(options.proxy("https://github.com/" + username)).then(response => {
+    let fetchCalendar = () =;
+>
+    fetch(options.proxy("https://github.com/" + username)).then(response = > {
         return response.text()
-    }).then(body => {
+    };
+).
+    then(body = > {
         let div = document.createElement("div");
         div.innerHTML = body;
         let cal = div.querySelector(".js-yearly-contributions");
@@ -112,8 +116,9 @@ module.exports = function GitHubCalendar (container, username, options) {
 
             container.innerHTML = cal.innerHTML;
         }
-    }).catch(e => console.error(e));
-
+}).
+    catch(e = > console.error(e);
+)
     return fetchCalendar();
-}
+};
 
